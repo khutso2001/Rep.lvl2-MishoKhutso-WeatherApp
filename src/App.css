@@ -36,6 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+.main{
+  display: flex;
+    justify-content: center;
+    margin-top: 80px;
+}
+label{
+  font-weight: bold;
+}
 form{
   display:flex;
   flex-direction: column;
@@ -74,14 +83,30 @@ form{
   min-height: 35px;
 }
 .button {
-background-color: rgb(63,63,65); 
+background-color: rgb(40, 228, 40); 
 color: white; 
-border: 2px solid rgb(63,63,65);
+border: 2px solid rgb(40, 228, 40);
 border-radius: 10px;
 }
 
 .button:hover {
-background-color: rgb(43, 43, 44);
-border: 2px solid rgb(43, 43, 44);
+background-color: rgb(40, 167, 29);
+border: 2px solid rgb(40, 167, 29);
 
+}
+
+img{
+  height: 30px;
+  width: 30px;
+}
+img.welldone{
+  margin-top: 28px;
+  margin-right: 20px;
+}
+.Done{
+  color: green;
+  display: flex;
+  justify-content: center;
+  margin-top: 250px;
+  font-weight: bold;
 }

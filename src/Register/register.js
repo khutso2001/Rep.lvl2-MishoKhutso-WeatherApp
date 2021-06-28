@@ -3,6 +3,7 @@ import React from 'react';
  import './App.css';
  import * as Yup from 'yup';
  import Loader from './Register/Components/Loader';
+ import './Register.css';
  
  function Form(){
   const formik = useFormik({
