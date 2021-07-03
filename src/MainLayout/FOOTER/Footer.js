@@ -30,7 +30,7 @@ const Footer = () => {
             <Grid item direction='column' xl={2} md={2}>
                     <h5>Products</h5>
 
-                    <ul className="list-unstyled foot-desc">
+                    <ul className="footlist">
                         <li className="mb-2">
                             <a className="blacked" href="#!">MDBootstrap</a>
                         </li>
@@ -49,7 +49,7 @@ const Footer = () => {
             <Grid item direction='column' xl={2} md={2}>
                     <h5>Useful links</h5>
 
-                    <ul>
+                    <ul className="footlist">
                         <li>
                             <a className="blacked" href="#!">Your Account</a>
                         </li>
@@ -68,7 +68,7 @@ const Footer = () => {
             <Grid item direction='column' xl={2} md={2}>
                     <h5>Contacts</h5>
 
-                    <ul>
+                    <ul className="footlist">
                         <li ><span className="fa-li"><i className="far fa-map"></i></span>New York, Avenue Street 10
                         </li>
                         <li ><span className="fa-li"><i className="fas fa-phone-alt"></i></span>042 876 836 908</li>
