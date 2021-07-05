@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   return (
     <div className={classes.root}>
       <FormControl component="fieldset" className={classes.formControl}>
-        <FormLabel component="legend">Size</FormLabel>
+        <FormLabel component="legend"><h3>Size</h3></FormLabel>
         <FormGroup>
           <FormControlLabel
             control={<Checkbox checked={NEW} onChange={handleChange} name="NEW" />}

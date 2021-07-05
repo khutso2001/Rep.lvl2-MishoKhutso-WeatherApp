@@ -1,5 +1,5 @@
 .black{
-    background-color: black;
+    background-color: rgb(46,46,46);
     color:white;
 }
 
@@ -21,4 +21,12 @@ ul{
 ul.footlist{
     display: flex;
     flex-direction: column;
+}
+.Footer-bottom{
+    background-color: rgb(37,37,37);
+    width: 100%;
+    justify-content: center;
+}
+.Footer-bottom-p{
+    color:white;
 }

@@ -11,20 +11,19 @@ import Typography from '@material-ui/core/Typography';
 const useStyles = makeStyles({
     root: {
         width: '100%',
-        height:'400px'
+        height:'350px'
     },
     media: {
         height: '250px',
     },
 });
 
+
 function MediaCard({ data: { title, price, img } }) {
     const classes = useStyles();
-
     return (
         <Card classes={{root:classes.root}}>
             <CardActionArea>
-
                 <CardMedia
                     className={classes.media}
                     image={img}

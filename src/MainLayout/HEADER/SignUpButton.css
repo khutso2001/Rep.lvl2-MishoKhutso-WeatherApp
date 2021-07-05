@@ -15,14 +15,14 @@
     min-height: 35px;
  }
  .button {
- background-color: rgb(87, 87, 224); 
- color: white; 
- border: 2px solid rgb(87, 87, 224);
+ background-color: rgb(222, 222, 231); 
+ color: rgb(61, 35, 207); 
+ border: 2px solid rgb(222, 222, 231);
  border-radius: 30px;
  }
  
  .button:hover {
- background-color: rgb(60, 60, 185);
- border: 2px solid rgb(60, 60, 185);
+ background-color: rgb(222, 222, 231);
+ border: 2px solid rgb(61, 35, 207);
  
  }

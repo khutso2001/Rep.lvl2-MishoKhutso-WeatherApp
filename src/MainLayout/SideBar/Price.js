@@ -82,10 +82,10 @@ function Price() {
   const classes = useStyles();
 
   return (
-    <Container>
-      <Box mb={3}>
+    <Grid Container direction='column'>
+      <Grid item >
         <FormControl component="fieldset">
-          <FormLabel component="legend">Price</FormLabel>
+          <FormLabel component="legend"><h3>Price</h3></FormLabel>
           <RadioGroup defaultValue="female" aria-label="gender" name="customized-radios">
             <FormControlLabel value="UNDER $25" control={<StyledRadio />} label="UNDER $25" />
             <FormControlLabel value="$25 TO $50" control={<StyledRadio />} label="$25 TO $50" />
@@ -94,28 +94,28 @@ function Price() {
             <FormControlLabel value="$200 TO $ABOVE" control={<StyledRadio />} label="$200 TO $ABOVE" />
           </RadioGroup>
         </FormControl>
-      </Box>
-      <Box>
+      </Grid>
+      <Grid item>
         <form classes={classes.root} noValidate autoComplete="off">
           <TextField className="inputt"
             id="outlined-search-input"
-            label="search..."
+            label="$ Min"
             type="search"
             autoComplete="current-search"
             variant="outlined"
           />
-
-
-          <TextField className="inputt"
+          
+        <TextField className="inputt"
             id="outlined-search-input"
-            label="search..."
+            label="$ Max"
             type="search"
             autoComplete="current-search"
             variant="outlined"
           />
-        </form>
-      </Box>
-    </Container>
+          </form>
+    
+      </Grid>
+    </Grid>
 
   );
 }

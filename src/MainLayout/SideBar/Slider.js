@@ -56,7 +56,7 @@ const PrettoSlider = withStyles({
   return (
     <div className={classes.root}>
       <div className={classes.margin} />
-      <Typography gutterBottom>Price</Typography>
+      <Typography gutterBottom><h3>Price</h3></Typography>
       <PrettoSlider  aria-label="pretto slider" defaultValue={10} />
     </div>
   );

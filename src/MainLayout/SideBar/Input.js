@@ -2,6 +2,7 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box'
+import SearchIcon from '@material-ui/icons/Search';
 import './Input.css';
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,8 +28,9 @@ const useStyles = makeStyles((theme) => ({
           type="search"
           autoComplete="current-search"
           variant="outlined"
-        />
+        /> <SearchIcon style={{ fontSize: 45 }}/>
         </form>
+       
     </Box>
     
   );

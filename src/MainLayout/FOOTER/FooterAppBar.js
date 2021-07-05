@@ -5,7 +5,10 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-
+import FacebookIcon from '@material-ui/icons/Facebook';
+import TwitterIcon from '@material-ui/icons/Twitter';
+import InstagramIcon from '@material-ui/icons/Instagram';
+import Grid from '@material-ui/core/Grid';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -24,42 +27,27 @@ export default function MenuAppBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
-  const handleChange = (event) => {
-    setAuth(event.target.checked);
-  };
-
-  const handleMenu = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
 
   return (
-    <div className={classes.root}>
-      
+    <Grid Container justify='space-between'>
+
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h6" className={classes.title}>
-          Get connected with us on social networks!
-          </Typography>
-          {auth && (
-            <div>
-              <IconButton
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleMenu}
-                color="inherit"
-              >
-                <AccountCircle />
-              </IconButton>
-              
-            </div>
-          )}
+          <Grid item xs={9}>
+            <Typography variant="h6" className={classes.title}>
+              Get connected with us on social networks!
+            </Typography>
+          </Grid>
+          <Grid item xs={3} justify='space-evenly'alignItems='center'>
+          <FacebookIcon />
+              <TwitterIcon />
+              <p>in</p>
+              <InstagramIcon />
+          </Grid>
         </Toolbar>
       </AppBar>
-    </div>
+    </Grid>
+
+
   );
 }

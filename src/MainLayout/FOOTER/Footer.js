@@ -78,6 +78,14 @@ const Footer = () => {
             </Grid>
 
         </Grid>
+       
+            <Grid Container className="Footer-bottom">
+                <Grid item>
+                    <p className="Footer-bottom-p">© 2020 Copyright: MDBootstrap.com</p>
+                </Grid>
+            </Grid>
+           
+        
         </Container >
     )
 }
