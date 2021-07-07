@@ -1,3 +1,22 @@
 ul{
     display:flex;
 }
+
+.brg{
+    visibility: hidden;
+}
+
+.toHide{
+    display: flex;
+    align-items: center;
+}
+
+@media only screen and (max-width: 800px) {
+    .brg {
+        visibility: visible;
+    }
+    .toHide{
+        display:none;
+
+    }
+  }

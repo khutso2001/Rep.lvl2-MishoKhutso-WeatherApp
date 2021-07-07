@@ -58,9 +58,9 @@ function Content() {
   return (
 
     <Container maxWidth="xl">
-      <Grid Container >
-        <Grid item  sx={12} wrap='wrap' >
-          <Sidebar/>
+      <Grid Container className="contentname" >
+        <Grid item  sx={12}>
+          <Sidebar sm={12} md={12} lg={3} xl={3}/>
         </Grid>
         <Grid  item justify='space-between' xs={9}  >
           <Grid item xs={12} justify='space-between' alignItems='center'>
@@ -72,7 +72,7 @@ function Content() {
             <Paginations />
           </Grid>
           {data.map(el => (
-            <Grid item xs={12} sm={6} md={4} lg={4} xl={4} className="clsnm" >
+            <Grid item xs={12} sm={6} md={6} lg={4} xl={4} className="clsnm" >
               <Card data={el} />
             </Grid>
           ))}

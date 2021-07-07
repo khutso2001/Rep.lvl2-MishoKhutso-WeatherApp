@@ -1,8 +1,8 @@
 import React from 'react';
-import Header from "./HEADER/Header"
-import Footer from './FOOTER/Footer';
+import Header from "./Header/Header"
+import Footer from './Footer/Footer';
 import Content from './Content';
-import ElevateAppBar from './HEADER/AppBar';
+import ElevateAppBar from './Header/AppBar';
 import { Container } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core';
 

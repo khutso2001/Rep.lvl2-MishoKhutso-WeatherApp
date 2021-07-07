@@ -11,17 +11,19 @@ import FlagIcon from '@material-ui/icons/Flag';
 import "./AppBar.css";
 import Button from "./SignUpButton";
 import Grid from '@material-ui/core/Grid';
+import { Menu } from '@material-ui/icons';
+import { Box } from '@material-ui/core';
 
 
 const useStyles = makeStyles({
   root: {
-    
+   
   }
-});  
+});
 
 function ElevationScroll(props) {
   const { children, window } = props;
- 
+
   const trigger = useScrollTrigger({
     disableHysteresis: true,
     threshold: 0,
@@ -35,46 +37,51 @@ function ElevationScroll(props) {
 
 ElevationScroll.propTypes = {
   children: PropTypes.element.isRequired,
- 
+
   window: PropTypes.func,
 };
 
 
 export default function ElevateAppBar(props) {
 
-  const classes=useStyles();
+  const classes = useStyles();
   return (
     <React.Fragment>
-      <CssBaseline/>
+      <CssBaseline />
       <ElevationScroll  {...props}>
         <AppBar color='transparent'>
           <Toolbar>
-          <Grid Container item xs={12} >
-          <Grid item  justify='space-between' alignItems='center' xs={8} >
-          <Typography variant="h6">MDB</Typography>
-          </Grid>
-          <Grid item alignItems='center' xs={4} >
-          <ShoppingCartIcon classes={{root:classes.root}}/>
-            <FlagIcon/>
-            <ul>
-              <li><a href="#">SHOP</a></li>
-              <li><a href="#">CONTACT</a></li>
-              <li><a href="#">SIGN IN</a></li>
-            </ul>
-            <Button/>
+            <Grid Container item xs={12} >
+              <Grid item justify='space-between' alignItems='center' xs={8} >
+                <Typography variant="h6">MDB</Typography>
+              </Grid>
+              <Grid item alignItems='center' xs={4} >
+                <Box className='toHide'>
+
+                  <ShoppingCartIcon classes={{ root: classes.root }} />
+                  <FlagIcon />
+                  <ul>
+                    <li><a href="#">SHOP</a></li>
+                    <li><a href="#">CONTACT</a></li>
+                    <li><a href="#">SIGN IN</a></li>
+                  </ul>
+                  <Button />
+                  </Box>
             </Grid>
-             
+
+                <Menu className='brg' />
 
 
-          </Grid>
+
+              </Grid>
     
           
           </Toolbar>
           
         </AppBar>
       </ElevationScroll>
-      <Toolbar />
+        <Toolbar />
     
     </React.Fragment>
-  );
+      );
 }
