@@ -5,23 +5,30 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
-
+import {Link as MLink} from "@material-ui/core";
+import {Link} from "react-router-dom";
+import {PRODUCTITEMS} from "./Routes";
 const useStyles = makeStyles({
     root: {
         width: '100%',
-        height:'350px'
+        height:'350px',
+        boxShadow:' 0px 0px 0px -0px rgb(0 0 0 / 0%), 0px 0px 0px 0px rgb(0 0 0 / 0%), 0px 0px 0px 0px rgb(0 0 0 / 0%)',
+
     },
     media: {
         height: '250px',
     },
+   
 });
 
 
-function MediaCard({ data: { title, price, img } }) {
+function MediaCard({ data: { title, price, img ,id } }) {
     const classes = useStyles();
+   
     return (
-        <Card classes={{root:classes.root}}>
-            <CardActionArea>
+        <MLink classes={{root:classes.root}}  component ={Link} to={PRODUCTITEMS.replace (':id',id)}>
+            <Card classes={{root:classes.root}} >
+            <CardActionArea >
                 <CardMedia
                     className={classes.media}
                     image={img}
@@ -38,6 +45,13 @@ function MediaCard({ data: { title, price, img } }) {
             </CardActionArea>
 
         </Card>
+        </MLink>
+
+ 
+
+           
+
+        
     );
 }
 export default MediaCard;

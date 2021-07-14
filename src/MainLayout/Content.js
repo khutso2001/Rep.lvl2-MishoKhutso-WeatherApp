@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Container from '@material-ui/core/Container'
+import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import './Content.css';
 import Card from "./Cards"
@@ -12,46 +12,55 @@ function Content() {
     {
       title: 'dress',
       img: 'https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15a.jpg',
-      price: '99,9'
+      price: '99,9',
+      id:'1'
     },
     {
       title: 'dress',
       img: 'https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15a.jpg',
-      price: '99,9'
+      price: '99,9',
+      id:'2'
     },
     {
       title: 'dress',
       img: 'https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15a.jpg',
-      price: '99,9'
+      price: '99,9',
+      id:'3'
     },
     {
       title: 'dress',
       img: 'https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15a.jpg',
-      price: '99,9'
+      price: '99,9',
+      id:'4'
     }, {
       title: 'dress',
       img: 'https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15a.jpg',
-      price: '99,9'
+      price: '99,9',
+      id:'5'
     },
     {
       title: 'dress',
       img: 'https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15a.jpg',
-      price: '99,9'
+      price: '99,9',
+      id:'6'
     }, 
     {
       title: 'dress',
       img: 'https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15a.jpg',
-      price: '99,9'
+      price: '99,9',
+      id:'7'
     }, 
     {
       title: 'dress',
       img: 'https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15a.jpg',
-      price: '99,9'
+      price: '99,9',
+      id:'8'
     },
     {
       title: 'dress',
       img: 'https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15a.jpg',
-      price: '99,9'
+      price: '99,9',
+      id:'9'
     },
 
   ]);
@@ -62,7 +71,7 @@ function Content() {
         <Grid item  sx={12}>
           <Sidebar sm={12} md={12} lg={3} xl={3}/>
         </Grid>
-        <Grid  item justify='space-between' xs={9}  >
+        <Grid  item justify='space-between' className="content_product" xs={9}  >
           <Grid item xs={12} justify='space-between' alignItems='center'>
             <Grid item >
               <ViewListIcon style={{ fontSize: 40 }} />
@@ -72,7 +81,7 @@ function Content() {
             <Paginations />
           </Grid>
           {data.map(el => (
-            <Grid item xs={12} sm={6} md={6} lg={4} xl={4} className="clsnm" >
+            <Grid item xs={12} sm={12} md={4} lg={4} xl={4} className="clsnm" >
               <Card data={el} />
             </Grid>
           ))}

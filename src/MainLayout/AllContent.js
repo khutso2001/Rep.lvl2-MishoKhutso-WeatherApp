@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from "./Header/Header"
+import Header from "./Header/Header";
 import Footer from './Footer/Footer';
 import Content from './Content';
 import ElevateAppBar from './Header/AppBar';
@@ -23,6 +23,7 @@ function AllContent() {
         <Footer>
           
         </Footer>
+
     </Container>
   
   )

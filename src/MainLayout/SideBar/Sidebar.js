@@ -8,6 +8,7 @@ import Star from "./AvgStars";
 import Price from "./Price";
 import Sliders from "./Slider";
 import Size from "./Size";
+import Color from "./Color";
 function Sidebar() {
 
   return (
@@ -27,6 +28,7 @@ function Sidebar() {
             <Price/>
             <Sliders/>
             <Size/>
+            <Color/>
             </Grid>
         </Grid>
         

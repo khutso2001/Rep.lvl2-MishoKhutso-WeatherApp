@@ -13,7 +13,7 @@ import Button from "./SignUpButton";
 import Grid from '@material-ui/core/Grid';
 import { Menu } from '@material-ui/icons';
 import { Box } from '@material-ui/core';
-
+import SignUpButton from './SignUpButton';
 
 const useStyles = makeStyles({
   root: {
@@ -49,15 +49,16 @@ export default function ElevateAppBar(props) {
     <React.Fragment>
       <CssBaseline />
       <ElevationScroll  {...props}>
-        <AppBar color='transparent'>
+        <AppBar color='inherit'>
           <Toolbar>
             <Grid Container item xs={12} >
+            
+
               <Grid item justify='space-between' alignItems='center' xs={8} >
                 <Typography variant="h6">MDB</Typography>
               </Grid>
               <Grid item alignItems='center' xs={4} >
                 <Box className='toHide'>
-
                   <ShoppingCartIcon classes={{ root: classes.root }} />
                   <FlagIcon />
                   <ul>
@@ -68,20 +69,12 @@ export default function ElevateAppBar(props) {
                   <Button />
                   </Box>
             </Grid>
-
-                <Menu className='brg' />
-
-
-
               </Grid>
-    
-          
+              <Menu className='brg' />
           </Toolbar>
-          
         </AppBar>
       </ElevationScroll>
         <Toolbar />
-    
     </React.Fragment>
       );
 }
