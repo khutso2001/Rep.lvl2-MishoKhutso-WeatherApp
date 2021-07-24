@@ -38,6 +38,7 @@ h3{
     width:80px;
     height: 105px;
 }
-.productPage{
+.ProductPage{
     justify-content: center;
+    align-items: center;
 }

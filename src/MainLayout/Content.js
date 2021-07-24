@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import './Content.css';
@@ -6,64 +6,24 @@ import Card from "./Cards"
 import Sidebar from "./SideBar/Sidebar"
 import ViewListIcon from '@material-ui/icons/ViewList';
 import ViewModuleIcon from '@material-ui/icons/ViewModule';
-import Paginations from "./Pagination"
+import Paginations from "./Pagination";
+import Loader from "./Loader";
+import Api from "./api.js/api";
 function Content() {
-  const [data, setData] = useState([
-    {
-      title: 'dress',
-      img: 'https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15a.jpg',
-      price: '99,9',
-      id:'1'
-    },
-    {
-      title: 'dress',
-      img: 'https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15a.jpg',
-      price: '99,9',
-      id:'2'
-    },
-    {
-      title: 'dress',
-      img: 'https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15a.jpg',
-      price: '99,9',
-      id:'3'
-    },
-    {
-      title: 'dress',
-      img: 'https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15a.jpg',
-      price: '99,9',
-      id:'4'
-    }, {
-      title: 'dress',
-      img: 'https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15a.jpg',
-      price: '99,9',
-      id:'5'
-    },
-    {
-      title: 'dress',
-      img: 'https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15a.jpg',
-      price: '99,9',
-      id:'6'
-    }, 
-    {
-      title: 'dress',
-      img: 'https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15a.jpg',
-      price: '99,9',
-      id:'7'
-    }, 
-    {
-      title: 'dress',
-      img: 'https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15a.jpg',
-      price: '99,9',
-      id:'8'
-    },
-    {
-      title: 'dress',
-      img: 'https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15a.jpg',
-      price: '99,9',
-      id:'9'
-    },
-
-  ]);
+  const [loading,setLoading] = useState(false);
+  const [data, setData] = useState([]);
+  useEffect (()=>{
+    setLoading(true);
+   
+           Api.getProductList()
+           .then (resp=>setData(resp))
+           .catch(err=>{
+             console.log(err)
+            })
+            .finally(()=>{
+              setLoading(false);
+            })
+  },[])
   return (
 
     <Container maxWidth="xl">
@@ -80,11 +40,13 @@ function Content() {
             <p>Label Example</p>
             <Paginations />
           </Grid>
-          {data.map(el => (
+          <Loader isLoading={loading}>
+          {!!data.length && data.map(el => (
             <Grid item xs={12} sm={12} md={4} lg={4} xl={4} className="clsnm" >
               <Card data={el} />
             </Grid>
           ))}
+          </Loader>
           <Grid item xs={12} justify='space-between'>
             <Grid item >
               <ViewListIcon style={{ fontSize: 40 }} />

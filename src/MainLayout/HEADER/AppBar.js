@@ -14,6 +14,9 @@ import Grid from '@material-ui/core/Grid';
 import { Menu } from '@material-ui/icons';
 import { Box } from '@material-ui/core';
 import SignUpButton from './SignUpButton';
+import {Link as MLink} from "@material-ui/core";
+import {Link} from "react-router-dom";
+import {PRODUCTITEMS,ALLLCONTENT,ADMIN,SIGN_IN,SIGN_UP} from "../Routes";
 
 const useStyles = makeStyles({
   root: {
@@ -52,13 +55,26 @@ export default function ElevateAppBar(props) {
         <AppBar color='inherit'>
           <Toolbar>
             <Grid Container item xs={12} >
-            
 
-              <Grid item justify='space-between' alignItems='center' xs={8} >
-                <Typography variant="h6">MDB</Typography>
+              <Grid item justify='space-between' alignItems='center' xs={9} >
+                <Typography variant="h6" ><p classNAme="bold">MDB</p></Typography>
+                
+                <Grid>
+                <MLink component ={Link} to={ALLLCONTENT}>home </MLink>
+                <MLink component ={Link} to={PRODUCTITEMS}>ProductPage</MLink>
+                <MLink component ={Link} to={ADMIN}>Admin</MLink>
+                <MLink component={Link} to={SIGN_IN}>SingIn</MLink>
+                <MLink component={Link} to={SIGN_UP}>SignUp</MLink>
+
               </Grid>
-              <Grid item alignItems='center' xs={4} >
+                </Grid>
+                  
+              
+             
+              <Grid item alignItems='center' xs={3} >
+              
                 <Box className='toHide'>
+                  
                   <ShoppingCartIcon classes={{ root: classes.root }} />
                   <FlagIcon />
                   <ul>
