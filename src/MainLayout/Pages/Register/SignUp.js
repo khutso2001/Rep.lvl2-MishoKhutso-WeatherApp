@@ -34,22 +34,49 @@ const useStyles = makeStyles({
 const SignUp = () => {
     const classes = useStyles();
     const [checked, setChecked] = useState(false);
-
+    const [register, setIsRegister] = useState(false);
     const handleChange = (event) => {
         setChecked(event.target.checked);
     };
     const formik = useFormik({
         initialValues: {
-            firstName: '',
-            lastName: '',
+            name: '',
             email: '',
             password: '',
-            phoneNumber: '',
+            password_confirmation: "",
         },
 
-        onSubmit: (values) => {
-            console.log('sent');
-        },
+        onSubmit: (values, { setStatus, resetForm, setErrors, setSubmitting }) => {
+            fetch("http://159.65.126.180/api/register", {
+                  method: "POST",
+                  body: JSON.stringify({
+                    name: values.name,
+                    email: values.email,
+                    password: values.password,
+                    password_confirmation: values.password_confirmation,
+                  }),
+                  headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                  },
+                })
+                
+            .then(res => res.json())
+              .then((json) => {
+                console.log(json);
+                  setStatus(true);
+                  setIsRegister(true);
+                  resetForm();
+                
+              })
+              .catch((error) => {
+                console.log(error);
+                setErrors({ main: "Error" });
+              })
+              .finally(() => {
+                setSubmitting(true);
+              });
+          },
     });
 
     return (
@@ -64,27 +91,18 @@ const SignUp = () => {
                     </Grid>
                     <Grid item className={classes.contentCenter}>
                         <TextField className={classes.nameLastnameWidth}
-                            id="firstName"
-                            value={formik.values.firstName}
-                            name="firstName"
+                            id="name"
+                            value={formik.values.name}
+                            name="name"
                             type="text"
                             onChange={formik.handleChange}
                             label="First Name"
                             variant="outlined"
 
                         />
-                        {formik.errors.firstName ? <div>{formik.errors.firstName}</div> : null}
+                        {formik.errors.name ? <div>{formik.errors.name}</div> : null}
 
-                        <TextField className={classes.nameLastnameWidth}
-                            id="lastName"
-                            value={formik.values.lastName}
-                            name="lastName"
-                            type="text"
-                            onChange={formik.handleChange}
-                            label="Last Name"
-                            variant="outlined"
-                        />
-                        {formik.errors.lastName ? <div>{formik.errors.lastName}</div> : null}
+
                     </Grid>
                     <Grid item direction='column'  >
                         <Grid item className={classes.contentCenter}>
@@ -117,18 +135,18 @@ const SignUp = () => {
                         </Grid>
                         <Grid item className={classes.contentCenter}>
                             <TextField className={classes.fieldWidth}
-                                id="phoneNumber"
-                                value={formik.values.phoneNumber}
-                                name="phoneNumber"
-                                type="number"
+                                id="password_confirmation"
+                                value={formik.values.password_confirmation}
+                                name="password_confirmation"
+                                type="password"
                                 onChange={formik.handleChange}
                                 label="Phone Number"
                                 variant="outlined"
                                 style={{ marginTop: "20px" }}
                                 helperText="Optional - for two step authentication"
                             />
-                            {formik.errors.phoneNumber ? (
-                                <div>{formik.errors.phoneNumber}</div>
+                            {formik.errors.password_confirmation ? (
+                                <div>{formik.errors.password_confirmation}</div>
                             ) : null}
 
                         </Grid>

@@ -29,9 +29,9 @@ function SignInButton() {
     <Container>
         <Grid Container className={classes.signInButtonCenter}>
             <Grid item >
-            <button className={classes.root}>
-            sign in
-        </button>
+            <button type='submit' className={classes.root}>
+                 sign in
+             </button>
             </Grid>
         </Grid>
         

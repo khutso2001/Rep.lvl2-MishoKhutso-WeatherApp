@@ -7,9 +7,13 @@ ul{
 .toHide{
     display: flex;
     align-items: center;
+    margin-left: 50px;
 }
 .bold{
     font-weight: bold;
+}
+.menuMargin{
+    margin-left: 170px;
 }
 @media only screen and (max-width: 800px) {
     .brg {

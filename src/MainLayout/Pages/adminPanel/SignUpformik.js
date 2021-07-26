@@ -27,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
   
   
  const Signup = () => {
+   
     const classes = useStyles();
    const formik = useFormik({
      initialValues: {
@@ -60,14 +61,19 @@ const useStyles = makeStyles((theme) => ({
                     image: values.img,
                     category: values.category
                 }
-            )
+            ),
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
         })
           .then(res => res.json())
           .then(json => {
             console.log(json);
             setStatus(true);
             resetForm();
-          }).catch((error) => {
+          })
+          .catch((error) => {
             console.log(error)
           })
           .finally(() => {

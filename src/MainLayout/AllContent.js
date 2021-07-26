@@ -5,7 +5,6 @@ import Content from './Content';
 import ElevateAppBar from './Header/AppBar';
 import { Container } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core';
-
 const useStyles = makeStyles({
   root: {
     maxWidth:'1400px',

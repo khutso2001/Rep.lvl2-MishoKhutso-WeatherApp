@@ -39,11 +39,11 @@ const SignIn = () => {
     };
     const formik = useFormik({
         initialValues: {
-            password: '',
             email: '',
+            password: '',
+           
         },
         validationSchema: Yup.object({
-
             email: Yup.string().email(<p className="required">Invalid email address</p>)
             .required(<p className="required">please enter your email</p>),
             password: Yup.string()
@@ -52,32 +52,38 @@ const SignIn = () => {
       
       
           }),
-        onSubmit: (values, { setStatus, resetForm }) => {
-            fetch("https://fakestoreapi.com/auth/login", {
+        onSubmit: (values, {setStatus, resetForm} ) => {
+            fetch(`http://159.65.126.180/api/auth/login`, {
                 method: "POST",
-                body: JSON.stringify({
-                    username: values.email,
+                body: JSON.stringify(
+                    {
+                        email: values.email,
                     password: values.password,
-                }),
+                }
+                ),
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                  },
             })
                 .then((res) => res.json())
                 .then((json) => {
-                    console.log(json);
+                    console.log(json.token.access_token);
                     setStatus(true);
                     resetForm();
+                    window.localStorage.setItem("token",json.token.access_token)
                 })
+                
                 .catch((error) => {
                     console.log(error);
                 })
                 .finally(() => {
                     console.log("sent");
-                    window.localStorage.setItem(values.email, values.password);
                 });
         },
     });
     return (
         <form className="styling" onSubmit={formik.handleSubmit}>
-
             <Container>
                 <Grid Container direction='column'>
                     <Grid item>

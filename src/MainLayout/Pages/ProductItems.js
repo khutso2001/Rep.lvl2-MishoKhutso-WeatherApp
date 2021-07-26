@@ -28,6 +28,19 @@ const useStyles = makeStyles((theme) => ({
   borderBottom: {
     borderBottom: '1px solid black'
   },
+  size:{
+    width:'98%',
+    height:'400px',
+  },
+  sizeSelect:{
+    width:'98%',
+    height:'200px',
+  },
+  spaceBetween:{
+    justifyContent:'space-between',
+    width:'98%',
+    height:'200px',
+  }
 
 
 }));
@@ -73,15 +86,28 @@ function ProductItem() {
         </Grid>
 
         <Loader isLoading={loading}>
-          {!!data.hasOwnProperty('title') && <Grid Container>
-            <Grid item sx={6} >
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, sapiente illo. Sit error voluptas repellat rerum quidem, soluta enim perferendis voluptates laboriosam. Distinctio, officia quis dolore quos sapiente tempore alias.</p>
+          {!!data.hasOwnProperty('title') && <Grid Container xs={12}>
 
-              <Grid container justify='space-between' >
+              <Grid container xs={6} justify='space-between' >
                 <Grid item xs={12}  >
-                  <Card  >
-                    <CardActionArea >
+                  
+                  <Card  className={classes.size}>
+                    <CardActionArea  className={classes.size}>
+                      <CardMedia    
+                        style={{width:'100%',height:'300px'}}
+                        className={classes.media}
+                        image={data.img}
+                        title={data.title}
+                      />
+                    </CardActionArea>
+                  </Card>
+                </Grid>
+                <Grid item className={classes.spaceBetween}>
+                <Grid item xs={3} className={classes.sizeSelect}>
+                  <Card className={classes.sizeSelect}>
+                    <CardActionArea className={classes.sizeSelect}>
                       <CardMedia 
+                      style={{width:'100%',height:'200px'}}
                         className={classes.media}
                         image={data.img}
                         title={data.title}
@@ -90,20 +116,10 @@ function ProductItem() {
                   </Card>
                 </Grid>
                 <Grid item xs={3}>
-                  <Card>
-                    <CardActionArea>
-                      <CardMedia 
-                        className={classes.media}
-                        image={data.img}
-                        title={data.title}
-                      />
-                    </CardActionArea>
-                  </Card>
-                </Grid>
-                <Grid item xs={3}>
-                  <Card>
-                    <CardActionArea>
+                  <Card className={classes.sizeSelect}>
+                    <CardActionArea className={classes.sizeSelect}>
                       <CardMedia
+                       style={{width:'100%',height:'200px'}}
                         className={classes.media}
                         image={data.img}
                         title={data.title}
@@ -112,9 +128,10 @@ function ProductItem() {
                   </Card>
                 </Grid>
                 <Grid item xs={3} >
-                  <Card>
-                    <CardActionArea>
+                  <Card className={classes.sizeSelect}>
+                    <CardActionArea className={classes.sizeSelect}>
                       <CardMedia
+                       style={{width:'100%',height:'200px'}}
                         className={classes.media}
                         image={data.img}
                         title={data.title}
@@ -122,10 +139,11 @@ function ProductItem() {
                     </CardActionArea>
                   </Card>
                 </Grid>
-              </Grid>
+                </Grid>
+                
             </Grid>
 
-            <Grid item direction='column' sx={6}>
+            <Grid item direction='column' xs={6}>
               <h4>Blue denim shirt</h4>
               <p>SHIRTS</p>
               <ul class="rating">
