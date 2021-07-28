@@ -2,7 +2,7 @@ import React, { useState,useEffect } from 'react';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import './Content.css';
-import Card from "./Cards"
+import Card from "../MainLayout/component/Cards"
 import Sidebar from "./SideBar/Sidebar"
 import ViewListIcon from '@material-ui/icons/ViewList';
 import ViewModuleIcon from '@material-ui/icons/ViewModule';

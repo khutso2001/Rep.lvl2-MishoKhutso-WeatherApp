@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import CardMedia from '@material-ui/core/CardMedia';
 import {Link as MLink} from "@material-ui/core";
 import {Link} from "react-router-dom";
-import {PRODUCTITEMS} from "./Routes";
+import {PRODUCTITEMS} from "../Routes";
 const useStyles = makeStyles({
     root: {
         width: '100%',

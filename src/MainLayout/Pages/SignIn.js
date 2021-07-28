@@ -11,7 +11,7 @@ import Grid from '@material-ui/core/Grid';
 import ElevateAppBar from "../Header/AppBar";
 import Footer from "../Footer/Footer";
 import { makeStyles } from '@material-ui/core';
-import SignInButton from "./SignInButton";
+import SignInButton from "../Pages/SignInButton";
 import "./SignIn.css";
 import * as Yup from 'yup';
 const useStyles = makeStyles({
