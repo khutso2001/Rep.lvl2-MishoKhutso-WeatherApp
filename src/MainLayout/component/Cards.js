@@ -26,7 +26,7 @@ function MediaCard({ data: { title, price, img ,id } }) {
     const classes = useStyles();
    
     return (
-        <MLink classes={{root:classes.root}}  component ={Link} to={PRODUCTITEMS.replace (':id',id)}>
+        <MLink classes={{root:classes.root}} style={{textDecoration:'none'}} component ={Link} to={PRODUCTITEMS.replace (':id',id)}>
             <Card classes={{root:classes.root}} >
             <CardActionArea >
                 <CardMedia

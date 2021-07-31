@@ -3,13 +3,14 @@ import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box'
 import SearchIcon from '@material-ui/icons/Search';
-import './Input.css';
+import "./input.css";
 const useStyles = makeStyles((theme) => ({
   root: {
     '& .MuiTextField-root': {
       margin: theme.spacing(1),
-      width: '25ch',
+      width: '40ch',
     },
+    
   },
 }));
 
@@ -22,13 +23,15 @@ const useStyles = makeStyles((theme) => ({
       <Box component="div" m={1}>
         <h2>Filter</h2>
       <form className={classes.root} noValidate autoComplete="off">
-      <TextField className="input"
+      <TextField className="input" 
           id="outlined-search-input"
           label="search..."
           type="search"
           autoComplete="current-search"
           variant="outlined"
-        /> <SearchIcon style={{ fontSize: 45 }}/>
+          
+        /> 
+        <SearchIcon  className="searchiconmargin"style={{ fontSize: 45}}/>
         </form>
        
     </Box>

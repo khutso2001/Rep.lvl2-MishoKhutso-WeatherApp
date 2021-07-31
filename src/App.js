@@ -3,7 +3,7 @@ import './App.css';
 import AllContent from "./MainLayout/AllContent";
 import Admin from "../src/MainLayout/Pages/adminPanel/AdminPanel";
 import SignIn from "./MainLayout/Pages/SignIn";
-import SignUp from "./MainLayout/Pages/Register/SignUp";
+import SignUp from "./MainLayout/Pages/register/SignUp";
 import {
   BrowserRouter as Router,
   Switch,
@@ -16,7 +16,6 @@ function App() {
   return (
      <Router>
         <Switch>
-         
           <Route path={PRODUCTITEMS}>
             <ProductItems/>
           </Route>

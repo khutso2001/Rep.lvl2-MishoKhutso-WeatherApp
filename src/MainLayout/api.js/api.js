@@ -1,28 +1,33 @@
-class Api {
-    constructor(){
+import {ProductList} from '../productData.js.js';
+import { SingleProduct } from '../productData.js.js';
 
-    }
+const Api ={
+  baseUrl:'https://fakestoreapi.com/',
 
-     static getProductList(){
+      getProductList:function(){
         return  fetch('https://fakestoreapi.com/products')
         .then(res=>res.json())
         .then(json=>{
           return (json.map(el=>{
-            return{
-              title:el.title,
-               price:el.price, 
-               img:el.image,
-               id:el.id,
-               description: el.description,
-               rating:6,
-            }
+          return SingleProduct(el);
           }))
         })
-    }
-    setSingleItem(id){
+    },
+    Pages: (p) => {
 
-    }
-
-    
+      return fetch(`https://fakestoreapi.com/products?page` + p)
+          .then(res => res.json())
+          .then(json => {
+              return ProductList(json);
+          })
+  },
+  getSingleItem: (id) => {
+    return fetch(`https://fakestoreapi.com/products/${id}`)
+    .then(res => res.json())
+    .then(el => {
+        return SingleProduct(el);
+    })
+},
 }
+
 export default Api;

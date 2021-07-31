@@ -8,10 +8,10 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { useState, useEffect } from "react";
-import Loader from "../../Loader";
-import { SINGLE_LIST } from "../../Routes";
+import Loader from "../Loader";
+import { SINGLE_LIST } from "../Routes";
 import { Link, generatePath } from "react-router-dom";
-import Api from "../../api.js/api";
+import Api from "../api.js/api";
 const StyledTableCell = withStyles((theme) => ({
   head: {
     backgroundColor: theme.palette.common.green,

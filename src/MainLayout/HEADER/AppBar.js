@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useContext  } from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -9,19 +9,27 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { makeStyles } from '@material-ui/core';
 import FlagIcon from '@material-ui/icons/Flag';
 import "./AppBar.css";
-import Button from "./SignUpButton";
+import SignUnButton from "../component/SignUpButtonHeader";
 import Grid from '@material-ui/core/Grid';
 import { Menu } from '@material-ui/icons';
 import { Box } from '@material-ui/core';
-import SignUpButton from './SignUpButton';
 import {Link as MLink} from "@material-ui/core";
 import {Link} from "react-router-dom";
 import {ALLLCONTENT,ADMIN,SIGN_IN,SIGN_UP} from "../Routes";
-
+import {UserContext} from "../store/UserContext";
 const useStyles = makeStyles({
   root: {
    alignItems:'center',
+   
   },
+  mrgin:{
+    marginLeft: '200px',
+  },
+  mdb:{
+    fontWeight:'bold',
+  }
+
+  
 
 });
 
@@ -47,9 +55,13 @@ ElevationScroll.propTypes = {
 
 
 export default function ElevateAppBar(props) {
-
   const classes = useStyles();
+  const userData=useContext(UserContext);
+  useEffect( ()=>{
+    console.log(userData);
+  },[]);
   return (
+    
     <React.Fragment>
       <CssBaseline />
       <ElevationScroll  {...props}>
@@ -57,27 +69,28 @@ export default function ElevateAppBar(props) {
           <Toolbar>
             <Grid Container item xs={12} >
 
-              <Grid item justify='space-between' alignItems='center' xs={8} >
-                <Typography variant="h6" ><p classNAme="bold">MDB</p></Typography>
+              <Grid item justify='space-between' alignItems='center' xs={7} >
+                <Typography variant="h6" ><p className={classes.mdb}>MDB</p></Typography>
                 
                 
                 </Grid>
-              <Grid item alignItems='center' className="menuMargin" xs={5}  >
+              <Grid item alignItems='center' className="menuMargin" xs={6} className={classes.mrgin} >
               
-                <Box className='toHide'  >
+                <Grid item className='toHide' classes={{ root: classes.root }} >
                   
                   <ShoppingCartIcon classes={{ root: classes.root }} />
                   <FlagIcon />
-                  <ul>
-                    <MLink component ={Link} to={ALLLCONTENT}><li><a href="#">HOME</a></li> </MLink>                
+                  <Grid item classes={{ root: classes.root }}>
+                  <ul style={{alignItems:'center'}} >
+                    <MLink style={{textDecoration:'none'}} component ={Link} to={ALLLCONTENT}><li><a href="#">HOME</a></li> </MLink>                
                     <li><a href="#">SHOP</a></li>
                     <li><a href="#">CONTACT</a></li>
-                    <MLink component ={Link} to={ADMIN}> <li><a href="#">ADMIN</a></li></MLink>
-                    <MLink component={Link} to={SIGN_IN}><li><a href="#">SIGN IN</a></li></MLink>
+                    <MLink style={{textDecoration:'none'}} component ={Link} to={ADMIN}> <li><a href="#">ADMIN</a></li></MLink>
+                    <MLink style={{textDecoration:'none'}} component={Link} to={SIGN_IN}><li><a href="#">SIGN IN</a></li></MLink>
                   </ul>
-                  <MLink component={Link} to={SIGN_UP}><Button /> </MLink>
-
-                 </Box>
+                  <MLink  style={{textDecoration:'none'}}component={Link} to={SIGN_UP}><SignUnButton>sign up</SignUnButton>  </MLink>
+                  </Grid>
+                 </Grid>
             </Grid>
               </Grid>
               <Menu className='brg' />
@@ -86,5 +99,6 @@ export default function ElevateAppBar(props) {
       </ElevationScroll>
         <Toolbar />
     </React.Fragment>
+  
       );
 }

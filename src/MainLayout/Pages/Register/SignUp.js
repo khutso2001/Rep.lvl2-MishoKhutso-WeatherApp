@@ -5,14 +5,11 @@ import { TextField } from "@material-ui/core";
 import Checkbox from "@material-ui/core/Checkbox";
 import { useState } from "react";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import { Box } from "@material-ui/core";
-import ElevateAppBar from "../../Header/AppBar";
+import ElevateAppBar from "../../header/AppBar";
 import Footer from "../../Footer/Footer";
-import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import * as Yup from 'yup';
 import { makeStyles } from '@material-ui/core';
-import SignUnButton from "./SignUpButton";
+import SignUnButton from "../../component/SignUpButton";
 import "./SignUp.css";
 const useStyles = makeStyles({
     SignUpContent: {
@@ -67,7 +64,7 @@ const SignUp = () => {
                   setStatus(true);
                   setIsRegister(true);
                   resetForm();
-                
+                  window.localStorage.setItem("token",json.token.access_token);
               })
               .catch((error) => {
                 console.log(error);
@@ -81,7 +78,6 @@ const SignUp = () => {
 
     return (
         <form className="styling" onSubmit={formik.handleSubmit}>
-            <Container>
                 <Grid Container direction='column'>
                     <Grid item>
                         <ElevateAppBar />
@@ -90,7 +86,7 @@ const SignUp = () => {
                         <h1>Sign Up</h1>
                     </Grid>
                     <Grid item className={classes.contentCenter}>
-                        <TextField className={classes.nameLastnameWidth}
+                        <TextField className={classes.fieldWidth}
                             id="name"
                             value={formik.values.name}
                             name="name"
@@ -191,7 +187,6 @@ const SignUp = () => {
                         <Footer />
                     </Grid>
                 </Grid>
-            </Container>
         </form>
     );
 };

@@ -1,23 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import Footer from '../Footer/Footer';
-import ElevateAppBar from '../Header/AppBar';
+import ElevateAppBar from '../header/AppBar';
 import { Container } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core';
 import "./product-item.css";
-import Quantity from "./Quantity";
-import SelectedSize from "./SelectedSize";
+import Quantity from "../component/Quantity";
+import SelectedSize from "../component/SelectedSize";
 import Button from '@material-ui/core/Button';
-import FullWidthTabs from "./Tabs";
+import FullWidthTabs from "../component/Tabs";
 import { useParams } from 'react-router-dom';
 import { CardMedia } from '@material-ui/core';
 import Card from '@material-ui/core/Card';
 import { CardActionArea } from '@material-ui/core';
 import Loader from '../Loader';
+import Api from "../api.js/api";
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: '100%',
     margin: '0px',
+    padding:'0',
   },
   margin: {
     margin: theme.spacing(1),
@@ -40,8 +42,10 @@ const useStyles = makeStyles((theme) => ({
     justifyContent:'space-between',
     width:'98%',
     height:'200px',
+  },
+  productPage:{
+    margin:'25px 0 25px 0',
   }
-
 
 }));
 
@@ -49,38 +53,28 @@ function ProductItem() {
 
   const classes = useStyles();
   const [loading, setLoading] = useState(false);
-
   const [data, setData] = useState({});
-  const { id } = useParams();
 
+
+  const { id } = useParams();
   useEffect(() => {
-    setLoading(true);
-    fetch(`https://fakestoreapi.com/products/${id}`)
-      .then(res => res.json())
-      .then(el =>
-        setData(
-          {
-            title: el.title,
-            price: el.price,
-            img: el.image,
-            id: el.id,
-            rating: 6,
-          }
-        )
-      )
-      .catch(err => { console.log(err) })
-      .finally(() => {
-        setLoading(false);
-      })
+      setLoading(true);
+      Api.getSingleItem(id)
+      .then(resp => setData(resp))
+          .catch(err => console.log(err))
+          .finally(() => {
+              setLoading(false);
+          })
   }, [])
-  console.log(data.img);
+
+  
   return (
     <Container className={classes.root}>
       < Container  >
         <ElevateAppBar />
 
         <Grid Container className="ProductPage">
-          <Grid item>
+          <Grid item className={classes.productPage}>
             <h2 >Product page</h2>
           </Grid>
         </Grid>

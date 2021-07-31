@@ -10,6 +10,7 @@ flex-wrap: wrap;
 .labelexample{
     margin-top: 10px;
 }
+
 @media only screen and (max-width: 800px) {
   .contentname {
       flex-wrap: wrap;

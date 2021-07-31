@@ -9,8 +9,8 @@ import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import Container from '@material-ui/core/Container'
 import TextField from '@material-ui/core/TextField';
-import { Box } from '@material-ui/core';
 import "./Price.css";
+import RemoveIcon from '@material-ui/icons/Remove';
 const useStyles = makeStyles({
   root: {
     '&:hover': {
@@ -19,39 +19,8 @@ const useStyles = makeStyles({
     display: 'flex'
 
   },
-  icon: {
-    borderRadius: '50%',
-    width: 16,
-    height: 16,
-    boxShadow: 'inset 0 0 0 1px rgba(16,22,26,.2), inset 0 -1px 0 rgba(16,22,26,.1)',
-    backgroundColor: '#f5f8fa',
-    backgroundImage: 'linear-gradient(180deg,hsla(0,0%,100%,.8),hsla(0,0%,100%,0))',
-    '$root.Mui-focusVisible &': {
-      outline: '2px auto rgba(19,124,189,.6)',
-      outlineOffset: 2,
-    },
-    'input:hover ~ &': {
-      backgroundColor: '#ebf1f5',
-    },
-    'input:disabled ~ &': {
-      boxShadow: 'none',
-      background: 'rgba(206,217,224,.5)',
-    },
-  },
-  checkedIcon: {
-    backgroundColor: '#137cbd',
-    backgroundImage: 'linear-gradient(180deg,hsla(0,0%,100%,.1),hsla(0,0%,100%,0))',
-    '&:before': {
-      display: 'block',
-      width: 16,
-      height: 16,
-      backgroundImage: 'radial-gradient(#fff,#fff 28%,transparent 32%)',
-      content: '""',
-    },
-    'input:hover ~ &': {
-      backgroundColor: '#106ba3',
-    },
-  },
+  
+ 
 });
 const useStyless = makeStyles((theme) => ({
   root: {
@@ -95,16 +64,24 @@ function Price() {
           </RadioGroup>
         </FormControl>
       </Grid>
-      <Grid item>
-        <form classes={classes.root} noValidate autoComplete="off">
-          <TextField className="inputt"
+      <form classes={classes.root} noValidate autoComplete="off">
+
+      <Grid item direction='row'>
+        <Grid item>
+        <TextField className="inputt"
             id="outlined-search-input"
             label="$ Min"
             type="search"
             autoComplete="current-search"
             variant="outlined"
+            
           />
-          
+        </Grid>
+        <Grid item style={{marginTop:'15px'}}>
+       < RemoveIcon />
+
+        </Grid>
+        <Grid item>
         <TextField className="inputt"
             id="outlined-search-input"
             label="$ Max"
@@ -112,9 +89,12 @@ function Price() {
             autoComplete="current-search"
             variant="outlined"
           />
-          </form>
+        </Grid>
+      
     
       </Grid>
+      </form>
+
     </Grid>
 
   );

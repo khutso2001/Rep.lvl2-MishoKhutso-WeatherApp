@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext} from "react";
 import { useFormik } from "formik";
 import { Button } from "@material-ui/core";
 import { TextField } from "@material-ui/core";
@@ -8,18 +8,19 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import { Box } from "@material-ui/core";
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import ElevateAppBar from "../Header/AppBar";
+import ElevateAppBar from "../header/AppBar";
 import Footer from "../Footer/Footer";
 import { makeStyles } from '@material-ui/core';
-import SignInButton from "../Pages/SignInButton";
+import SignInButton from "./SignInButton";
 import "./SignIn.css";
 import * as Yup from 'yup';
+import {UserContext} from "../store/UserContext";
 const useStyles = makeStyles({
     contentCenter: {
         justifyContent: 'center',
     },
     fieldWidth: {
-        width: '600px',
+        width: '630px',
     },
     remember: {
         display: 'flex',
@@ -28,12 +29,18 @@ const useStyles = makeStyles({
     SigninContent:{
         justifyContent: 'center',
         padding:'20px',
+    },
+    footer:{
+        maxWidth:'100%',
+        padding:'0',
+        margin:'0',
     }
 });
 const SignIn = () => {
     const classes = useStyles();
     const [checked, setChecked] = useState(false);
-
+    const userContext=useContext(UserContext);
+    console.log(userContext);
     const handleChange = (event) => {
         setChecked(event.target.checked);
     };
@@ -68,10 +75,16 @@ const SignIn = () => {
             })
                 .then((res) => res.json())
                 .then((json) => {
-                    console.log(json.token.access_token);
+                    console.log( json);
+                    localStorage.setItem( json.token.access_token);
+                    localStorage.setItem(json.user.name);
                     setStatus(true);
                     resetForm();
-                    window.localStorage.setItem("token",json.token.access_token)
+                    userContext.setData({
+                        ...userContext.data,
+                        isLoggedIn:true,
+                    })
+                    window.localStorage.setItem(json.token.access_token)
                 })
                 
                 .catch((error) => {
@@ -84,7 +97,6 @@ const SignIn = () => {
     });
     return (
         <form className="styling" onSubmit={formik.handleSubmit}>
-            <Container>
                 <Grid Container direction='column'>
                     <Grid item>
                         <ElevateAppBar />
@@ -169,18 +181,15 @@ const SignIn = () => {
                             <Button>
                                 <i className="fab fa-github"></i>
                             </Button>
-                       
                     </Grid>
                     <Grid item>
-                        <Footer />
+                        <Footer className={classes.footer} />
                     </Grid>
                 </Grid>
-            </Container>
         </form>
 
     )
 };
-
 export default SignIn;
 
 
