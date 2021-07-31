@@ -23,7 +23,7 @@ const useStyles = makeStyles({
    
   },
   mrgin:{
-    marginLeft: '200px',
+    marginLeft: '250px',
   },
   mdb:{
     fontWeight:'bold',
