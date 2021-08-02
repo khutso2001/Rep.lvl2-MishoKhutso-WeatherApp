@@ -5,16 +5,15 @@ import { TextField } from "@material-ui/core";
 import Checkbox from "@material-ui/core/Checkbox";
 import { useState } from "react";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import { Box } from "@material-ui/core";
-import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import ElevateAppBar from "../header/AppBar";
-import Footer from "../Footer/Footer";
+import Footer from "../layouts/footer/Footer";
 import { makeStyles } from '@material-ui/core';
 import SignInButton from "./SignInButton";
 import "./SignIn.css";
 import * as Yup from 'yup';
 import {UserContext} from "../store/UserContext";
+import Api from "../api.js/api";
 const useStyles = makeStyles({
     contentCenter: {
         justifyContent: 'center',
@@ -59,32 +58,17 @@ const SignIn = () => {
       
       
           }),
-        onSubmit: (values, {setStatus, resetForm} ) => {
-            fetch(`http://159.65.126.180/api/auth/login`, {
-                method: "POST",
-                body: JSON.stringify(
-                    {
-                        email: values.email,
-                    password: values.password,
-                }
-                ),
-                headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "application/json",
-                  },
-            })
-                .then((res) => res.json())
+          onSubmit: (values, { setStatus, resetForm, setErrors, setSubmitting }) => {
+            Api.signIn(values.email, values.password)
                 .then((json) => {
                     console.log( json);
-                    localStorage.setItem( json.token.access_token);
-                    localStorage.setItem(json.user.name);
                     setStatus(true);
                     resetForm();
                     userContext.setData({
                         ...userContext.data,
                         isLoggedIn:true,
                     })
-                    window.localStorage.setItem(json.token.access_token)
+                    localStorage.setItem("token",json.token.access_token)
                 })
                 
                 .catch((error) => {

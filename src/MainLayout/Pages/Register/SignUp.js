@@ -6,11 +6,12 @@ import Checkbox from "@material-ui/core/Checkbox";
 import { useState } from "react";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import ElevateAppBar from "../../header/AppBar";
-import Footer from "../../Footer/Footer";
+import Footer from "../../layouts/footer/Footer";
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core';
 import SignUnButton from "../../component/SignUpButton";
 import "./SignUp.css";
+import Api from "../../api.js/api";
 const useStyles = makeStyles({
     SignUpContent: {
         justifyContent: 'center',
@@ -43,28 +44,13 @@ const SignUp = () => {
             password_confirmation: "",
         },
 
-        onSubmit: (values, { setStatus, resetForm, setErrors, setSubmitting }) => {
-            fetch("http://159.65.126.180/api/register", {
-                  method: "POST",
-                  body: JSON.stringify({
-                    name: values.name,
-                    email: values.email,
-                    password: values.password,
-                    password_confirmation: values.password_confirmation,
-                  }),
-                  headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "application/json",
-                  },
-                })
-                
-            .then(res => res.json())
+        onSubmit: (values,{ setStatus, resetForm, setErrors, setSubmitting }) => {
+            Api.signUp(values.name,values.email,values.password,values.password_confirmation)
               .then((json) => {
                 console.log(json);
                   setStatus(true);
                   setIsRegister(true);
                   resetForm();
-                  window.localStorage.setItem("token",json.token.access_token);
               })
               .catch((error) => {
                 console.log(error);
@@ -136,7 +122,7 @@ const SignUp = () => {
                                 name="password_confirmation"
                                 type="password"
                                 onChange={formik.handleChange}
-                                label="Phone Number"
+                                label="password confirmation"
                                 variant="outlined"
                                 style={{ marginTop: "20px" }}
                                 helperText="Optional - for two step authentication"

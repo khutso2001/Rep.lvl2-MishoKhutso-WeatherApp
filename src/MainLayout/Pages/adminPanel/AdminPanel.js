@@ -34,7 +34,7 @@ function Admin() {
                 <Grid item>
                     <ElevateAppBar/>
                 </Grid>
-                <Grid Container className={classes.margin}>
+                <Grid Container sx={12} className={classes.margin}>
                     <Grid item sx={4} direction='column'>
                         <Grid item>
                         <ul className={classes.root}>

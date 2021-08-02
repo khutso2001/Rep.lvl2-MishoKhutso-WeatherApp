@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Footer from '../Footer/Footer';
+import Footer from '../layouts/footer/Footer';
 import ElevateAppBar from '../header/AppBar';
 import { Container } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
