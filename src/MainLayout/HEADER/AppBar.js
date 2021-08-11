@@ -37,6 +37,20 @@ const useStyles = makeStyles({
 inline:{
   width:'60px',
   display:'inline-block',
+},
+logOutBtn:{
+  borderRadius:'30px',
+  backgroundColor:'red',
+  border:'none',
+  color: 'white',
+  padding: '8px 32px',
+  textAlign:'center',
+  textDecoration: 'none',
+  display: 'inline-block',
+  fontSize: '16px',
+  margin: '4px 2px',
+  cursor: 'pointer',
+  heightL:'20px',
 }
   
 
@@ -101,7 +115,7 @@ export default function ElevateAppBar(props) {
                     <li><a href="#">SHOP</a></li>
                     <li><a href="#">CONTACT</a></li>
                     <MLink style={{textDecoration:'none'}} component ={Link} to={ADMIN}> <li><a href="#" >ADMIN</a></li></MLink>
-                    <li><button onClick={Logout}>Logout</button></li>
+                    <li><button className={classes.logOutBtn} onClick={Logout}>Logout</button></li>
                     </ul>
                         </>
 
