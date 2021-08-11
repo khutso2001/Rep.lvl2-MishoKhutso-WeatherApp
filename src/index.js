@@ -3,13 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {UserContextProvider} from "./MainLayout/store/UserContext";
-
+import { UserContextProvider } from "./MainLayout/store/UserContext";
+import {Provider} from "react-redux";
+import store from "./MainLayout/store/store";
 ReactDOM.render(
   <React.StrictMode>
-    <UserContextProvider>
-    <App />
-    </UserContextProvider>
+    <Provider store={store}>
+        <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

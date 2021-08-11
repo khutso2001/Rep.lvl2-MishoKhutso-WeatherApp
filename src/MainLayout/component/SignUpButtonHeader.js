@@ -8,7 +8,12 @@ const useStyles = makeStyles({
 
     signInButtonCenter:{
         justifyContent:'center',
-    }
+       
+    },
+    inline:{
+        width:'60px',
+        display:'inline-block',
+      }
 });
 function SignUnButton() {
     const classes = useStyles();
@@ -18,7 +23,7 @@ function SignUnButton() {
         <Grid Container>
             <Grid item >
             <button className="button">
-                Sign Up
+                <a href="#" className={classes.inline}>Sign Up</a>
             </button>
             </Grid>
         </Grid>

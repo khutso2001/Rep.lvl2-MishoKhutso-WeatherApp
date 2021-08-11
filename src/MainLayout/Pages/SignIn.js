@@ -38,8 +38,8 @@ const useStyles = makeStyles({
 const SignIn = () => {
     const classes = useStyles();
     const [checked, setChecked] = useState(false);
-    const userContext=useContext(UserContext);
-    console.log(userContext);
+    const userData=useContext(UserContext);
+    console.log(userData);
     const handleChange = (event) => {
         setChecked(event.target.checked);
     };
@@ -64,8 +64,8 @@ const SignIn = () => {
                     console.log( json);
                     setStatus(true);
                     resetForm();
-                    userContext.setData({
-                        ...userContext.data,
+                    userData.setData({
+                        ...userData.data,
                         isLoggedIn:true,
                     })
                     localStorage.setItem("token",json.token.access_token)

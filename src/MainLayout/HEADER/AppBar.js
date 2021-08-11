@@ -27,8 +27,11 @@ const useStyles = makeStyles({
   },
   mdb:{
     fontWeight:'bold',
-  }
-
+  },
+inline:{
+  width:'60px',
+  display:'inline-block',
+}
   
 
 });
@@ -85,10 +88,10 @@ export default function ElevateAppBar(props) {
                     <MLink style={{textDecoration:'none'}} component ={Link} to={ALLLCONTENT}><li><a href="#">HOME</a></li> </MLink>                
                     <li><a href="#">SHOP</a></li>
                     <li><a href="#">CONTACT</a></li>
-                    <MLink style={{textDecoration:'none'}} component ={Link} to={ADMIN}> <li><a href="#">ADMIN</a></li></MLink>
-                    <MLink style={{textDecoration:'none'}} component={Link} to={SIGN_IN}><li><a href="#">SIGN IN</a></li></MLink>
+                    <MLink style={{textDecoration:'none'}} component ={Link} to={ADMIN}> <li><a href="#" >ADMIN</a></li></MLink>
+                    <MLink style={{textDecoration:'none'}} component={Link} to={SIGN_IN}><li><a href="#" className={classes.inline}>SIGN IN</a></li></MLink>
                   </ul>
-                  <MLink  style={{textDecoration:'none'}}component={Link} to={SIGN_UP}><SignUnButton>sign up</SignUnButton>  </MLink>
+                  <MLink  style={{textDecoration:'none'}}component={Link} to={SIGN_UP}><SignUnButton >sign up</SignUnButton>  </MLink>
                   </Grid>
                  </Grid>
             </Grid>
