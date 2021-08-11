@@ -63,6 +63,55 @@ const Api = {
       }
     });
   },
+  getData: (url, params, method = "get", token) => {
+    function objectToQueryString(obj) {
+      return Object.keys(obj)
+        .map((key) => key + "=" + obj[key])
+        .join("&");
+    }
+
+    let options;
+    if (token) {
+      options = {
+        method,
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      };
+    } else {
+      options = {
+        method,
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      };
+    }
+    method = method.toUpperCase();
+    if (params) {
+      if (method === "GET") {
+        url += "?" + objectToQueryString(params);
+      } else {
+        options.body = JSON.stringify(params);
+      }
+    }
+    return fetch(Api.baseUrl + url, options).then((resp) => {
+      if (!resp.ok && token) {
+        resp.text().then((text) => {
+          localStorage.removeItem("token");
+          throw Error(text);
+        });
+      } else {
+        return resp.json();
+      }
+    });
+  },
+
+  getMe: (token) => {
+    return Api.getData("auth/me", undefined, "POST", token);
+  },
 }
 
 export default Api;

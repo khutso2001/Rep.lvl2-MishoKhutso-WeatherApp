@@ -1,11 +1,10 @@
 import { combineReducers } from "redux";
 import user from "./userReducer";
 import products from "./userReducer";
-const appReducer=combineReducers({
+const rootReducer=combineReducers({
   user,
   products,
 })
 
 
-export default appReducer;
-
+export default rootReducer;

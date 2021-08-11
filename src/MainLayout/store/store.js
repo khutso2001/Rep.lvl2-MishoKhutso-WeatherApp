@@ -7,4 +7,4 @@ import {composeWithDevTools} from "redux-devtools-extension";
     applyMiddleware(...middleware),
 ));
 
-export default store
+export default store;

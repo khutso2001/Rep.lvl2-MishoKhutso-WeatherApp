@@ -1,15 +1,15 @@
 const initialState = {
-    products:{},
-    isLogginIn:false,
-  
-  }
-  
-  export default function productsReducer(state = initialState, action) {
- 
-    switch (action.type) {
+  products:{},
+  isLogginIn:false,
 
-      default:
+}
 
-        return state;
-    }
+export default function productsReducer(state = initialState, action) {
+
+  switch (action.type) {
+
+    default:
+
+      return state;
   }
+}

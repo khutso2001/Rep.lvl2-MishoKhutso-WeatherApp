@@ -14,6 +14,10 @@ import "./SignIn.css";
 import * as Yup from 'yup';
 import {UserContext} from "../store/UserContext";
 import Api from "../api.js/api";
+import { useDispatch } from 'react-redux';
+import { setLoginIn, setToken, setUser } from "../store/user/userActionCreator";
+import { setLogin } from './../store/user/userActionCreator';
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 const useStyles = makeStyles({
     contentCenter: {
         justifyContent: 'center',
@@ -38,8 +42,8 @@ const useStyles = makeStyles({
 const SignIn = () => {
     const classes = useStyles();
     const [checked, setChecked] = useState(false);
-    const userData=useContext(UserContext);
-    console.log(userData);
+    let dispatch = useDispatch();
+    let history = useHistory();
     const handleChange = (event) => {
         setChecked(event.target.checked);
     };
@@ -64,10 +68,10 @@ const SignIn = () => {
                     console.log( json);
                     setStatus(true);
                     resetForm();
-                    userData.setData({
-                        ...userData.data,
-                        isLoggedIn:true,
-                    })
+                    dispatch(setUser(json.user))
+                    dispatch(setToken(json.token.access_token))
+                    dispatch(setLogin(true))
+                    history.push('/');
                     localStorage.setItem("token",json.token.access_token)
                 })
                 
@@ -175,7 +179,4 @@ const SignIn = () => {
     )
 };
 export default SignIn;
-
-
-
 

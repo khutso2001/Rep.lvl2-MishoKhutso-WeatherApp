@@ -17,6 +17,12 @@ import {Link as MLink} from "@material-ui/core";
 import {Link} from "react-router-dom";
 import {ALLLCONTENT,ADMIN,SIGN_IN,SIGN_UP} from "../Routes";
 import {UserContext} from "../store/UserContext";
+import { useSelector } from 'react-redux';
+import { selectUser } from './../store/user/userSelector';
+import { Button } from 'bootstrap';
+import { useDispatch } from 'react-redux';
+import { setToken } from '../store/user/userActionCreator';
+import { setLogin } from './../store/user/userActionCreator';
 const useStyles = makeStyles({
   root: {
    alignItems:'center',
@@ -59,10 +65,13 @@ ElevationScroll.propTypes = {
 
 export default function ElevateAppBar(props) {
   const classes = useStyles();
-  const userData=useContext(UserContext);
-  useEffect( ()=>{
-    console.log(userData);
-  },[]);
+  let userData = useSelector(selectUser);
+  let dispatch = useDispatch();
+  const Logout = () => {
+    dispatch(setLogin(false));
+    localStorage.removeItem('token');
+  }
+  console.log(userData);
   return (
     
     <React.Fragment>
@@ -84,7 +93,21 @@ export default function ElevateAppBar(props) {
                   <ShoppingCartIcon classes={{ root: classes.root }} />
                   <FlagIcon />
                   <Grid item classes={{ root: classes.root }}>
-                  <ul style={{alignItems:'center'}} >
+                    {
+                      userData.isLogedIn ? (
+                        <>
+                        <ul style={{alignItems:'center'}} >
+                    <MLink style={{textDecoration:'none'}} component ={Link} to={ALLLCONTENT}><li><a href="#">HOME</a></li> </MLink>                
+                    <li><a href="#">SHOP</a></li>
+                    <li><a href="#">CONTACT</a></li>
+                    <MLink style={{textDecoration:'none'}} component ={Link} to={ADMIN}> <li><a href="#" >ADMIN</a></li></MLink>
+                    <li><button onClick={Logout}>Logout</button></li>
+                    </ul>
+                        </>
+
+                      ) : (
+                        <>
+                        <ul style={{alignItems:'center'}} >
                     <MLink style={{textDecoration:'none'}} component ={Link} to={ALLLCONTENT}><li><a href="#">HOME</a></li> </MLink>                
                     <li><a href="#">SHOP</a></li>
                     <li><a href="#">CONTACT</a></li>
@@ -92,6 +115,10 @@ export default function ElevateAppBar(props) {
                     <MLink style={{textDecoration:'none'}} component={Link} to={SIGN_IN}><li><a href="#" className={classes.inline}>SIGN IN</a></li></MLink>
                   </ul>
                   <MLink  style={{textDecoration:'none'}}component={Link} to={SIGN_UP}><SignUnButton >sign up</SignUnButton>  </MLink>
+                  </>
+                      )
+                    }
+              
                   </Grid>
                  </Grid>
             </Grid>

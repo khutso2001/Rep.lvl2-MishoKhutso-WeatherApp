@@ -1,4 +1,3 @@
-
 export const ALLLCONTENT='/';
 export const ADMIN='/Admin';
 export const SINGLE_LIST = '/product/:id';

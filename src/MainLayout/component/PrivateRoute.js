@@ -1,24 +1,20 @@
 import React from "@material-ui/core";
 import { Component } from "react";
-import { useContext } from "react";
-import { UserContext } from "../store/UserContext";
 import { Route } from "react-router-dom/cjs/react-router-dom.min";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
+import { useSelector } from "react-redux";
+import { selectUser } from "../store/user/userSelector";
   export const PrivateRoute=({component:Component, ...rest})=>{
-    const userContext=useContext(UserContext);
-    console.log(userContext);
+    let userData = useSelector(selectUser);
 
     return (
-      
         <Route
           {...rest}
           render={(props) => {
-            if (userContext.data.isLoggedIn) {
+            if (userData.isLogedIn) {
               return <Component {...props} />;
             } 
             else {
-              console.log(userContext);
-
               return (
                 <Redirect
                   to={{
@@ -30,7 +26,6 @@ import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
                 /> );
             }
           }}/>
-         
       ); 
 }
 export default PrivateRoute;

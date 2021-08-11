@@ -1,10 +1,10 @@
 import { SET_USER, SET_TOKEN, SET_LOGED, SET_LOGININ, } from "./userActionConst";
 
 const initialState = {
+    isLoggedIn: false,
+    isLoggingIn: false,
     user: {},
-    isLogginIn: false,
-    isLogedIn: false,
-    token: '',
+    token: "",
 }
 
 export default function userReducer(state = initialState, action) {
@@ -23,7 +23,7 @@ export default function userReducer(state = initialState, action) {
         case SET_LOGED:
             return {
                 ...state,
-                isLoggedIn: action.isLoggedIn,
+                isLogedIn: action.isLoggedIn,
             };
         case SET_LOGININ:
             return {
@@ -33,6 +33,6 @@ export default function userReducer(state = initialState, action) {
 
         default:
 
-            return state
+            return state;
     }
 }

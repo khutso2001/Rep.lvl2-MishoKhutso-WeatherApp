@@ -2,8 +2,7 @@ import {SET_USER,SET_TOKEN,SET_LOGED,SET_LOGININ} from "./userActionConst";
 export const  setUser =(user)=>{
     return{
         type:SET_USER,
-        token:'ajbsh',
-        user,
+        user
     }
 }
 export const  setToken=(token)=>{
@@ -12,16 +11,16 @@ export const  setToken=(token)=>{
         token,
     }
 }
-export const setLogin = (boolean) => {
+export const setLogin = (bool) => {
     return {
         type:SET_LOGED,
-        isLoggedIn:boolean,
+        isLoggedIn:bool,
     }
 }
 
-export const setLoginIn = (boolean) => {
+export const setLoginIn = (bool) => {
     return {
         type:SET_LOGININ,
-        isLoggingIn:boolean,
+        isLoggingIn:bool,
     }
 }
