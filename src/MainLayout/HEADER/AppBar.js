@@ -11,7 +11,6 @@ import FlagIcon from '@material-ui/icons/Flag';
 import "./AppBar.css";
 import SignUnButton from "../component/SignUpButtonHeader";
 import Grid from '@material-ui/core/Grid';
-import { Menu } from '@material-ui/icons';
 import { Box } from '@material-ui/core';
 import {Link as MLink} from "@material-ui/core";
 import {Link} from "react-router-dom";
@@ -23,6 +22,7 @@ import { Button } from 'bootstrap';
 import { useDispatch } from 'react-redux';
 import { setToken } from '../store/user/userActionCreator';
 import { setLogin } from './../store/user/userActionCreator';
+import BurgerMenu from "./BurgerMenu";
 const useStyles = makeStyles({
   root: {
    alignItems:'center',
@@ -40,9 +40,9 @@ inline:{
 },
 logOutBtn:{
   borderRadius:'30px',
-  backgroundColor:'red',
+  backgroundColor:'white',
   border:'none',
-  color: 'white',
+  color: 'red',
   padding: '8px 32px',
   textAlign:'center',
   textDecoration: 'none',
@@ -137,7 +137,7 @@ export default function ElevateAppBar(props) {
                  </Grid>
             </Grid>
               </Grid>
-              <Menu className='brg' />
+              <BurgerMenu/>
           </Toolbar>
         </AppBar>
       </ElevationScroll>

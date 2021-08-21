@@ -54,14 +54,16 @@ const SignIn = () => {
            
         },
         validationSchema: Yup.object({
-            email: Yup.string().email(<p className="required">Invalid email address</p>)
+            email: Yup.string()
+            .min(6, <p className="required">Must be 8 characters or more</p>)
             .required(<p className="required">please enter your email</p>),
             password: Yup.string()
-            .min(8, <p className="required">Must be 8 characters or more</p>)
+            .min(6, <p className="required">Must be 8 characters or more</p>)
             .required(<p className="required">please enter your password</p>),
       
       
           }),
+          
           onSubmit: (values, { setStatus, resetForm, setErrors, setSubmitting }) => {
             Api.signIn(values.email, values.password)
                 .then((json) => {
@@ -93,7 +95,7 @@ const SignIn = () => {
                         <h1>Sign In</h1>
                     </Grid>
                     <Grid item direction='column'>
-                        <Grid item className={classes.contentCenter}>
+                        <Grid item  className={classes.contentCenter}>
                             <TextField className={classes.fieldWidth}
                                 id="email"
                                 value={formik.values.email}
