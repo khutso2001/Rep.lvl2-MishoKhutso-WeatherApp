@@ -1,0 +1,48 @@
+.top{
+    width: 100%;
+    height: 50px;
+    background-color: white;
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    font-family: "Josefin Sans", sans-serif;
+    z-index: 999;
+}
+
+.topLeft,.topRight{
+    flex:3;
+    display: flex;
+    align-items: center;
+    justify-content:center ;
+}
+.topCenter{
+    flex:6;
+}
+.topImg{
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    object-fit: cover;
+}
+.topSerchIcon{
+    cursor: pointer;
+    margin-left: 10px;
+    color: #666;
+}
+.topList{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+.topIcons{
+    margin-right: 10px;
+    color:#444;
+    cursor: pointer;
+}
+.topListItems{
+    margin-right: 10px;
+    cursor: pointer;
+    justify-content: space-evenly;
+
+}

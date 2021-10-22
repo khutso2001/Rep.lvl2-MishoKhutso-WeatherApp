@@ -1,57 +1,34 @@
-import React, { useEffect }  from 'react';
+import React  from 'react';
 import './App.css';
-import AllContent from "./MainLayout/AllContent";
-import Admin from "../src/MainLayout/Pages/adminPanel/AdminPanel";
-import SignIn from "./MainLayout/Pages/SignIn";
-import SignUp from "./MainLayout/Pages/register/SignUp";
-import PrivateRoute from "./MainLayout/component/PrivateRoute"; 
-import {BrowserRouter as Router,Switch,Route,} from "react-router-dom";
-import ProductItems from "./MainLayout/Pages/ProductItems";
-import {PRODUCTITEMS,ALLLCONTENT,ADMIN,SIGN_IN,SIGN_UP} from "./MainLayout/Routes";
-import {useDispatch, useSelector} from "react-redux";
-import {setUser,setToken}  from "./MainLayout/store/user/userActionCreator";
-import { selectUser } from './MainLayout/store/user/userSelector';
-import Api from "./MainLayout/api.js/api";
-import {setLoginIn,setLogin} from "./MainLayout/store/user/userActionCreator";
-
-const token = localStorage.getItem("token");
-
+import TopBar from './components/topbar/TopBar';
+import Home from "./pages/home/Home";
+import Write from "./pages/write/Write";
+import Single from "./pages/single/Single";
+import Settings from "./pages/settings/Settings";
+import Login from "./pages/login/Login";
+import Register from "./pages/register/Register";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 const App = () => {
-  let dispatch = useDispatch();
-  useEffect(() => {
-    isTokenAllowed();
-  }, []);
+  const user=false;
+   
 
-  const user = useSelector(selectUser);
-
-  const isTokenAllowed = () => {
-    if (token) {
-      Api.getMe(token)
-        .then((json) => {
-          console.log(json)
-          dispatch(setLoginIn(false));
-          dispatch(setLogin(true));
-          dispatch(setUser(json));
-        })
-        .catch((err) => {
-          console.log("Caught it: ", err);
-        });
-    } else {
-      console.log("Token isn't valid");
-    }
-  };
-    
   return (
-     <Router>
-
-        <Switch>
-          <Route path={PRODUCTITEMS} component={ProductItems}></Route>
-          <PrivateRoute path={ADMIN} component={Admin}></PrivateRoute>
-          <Route path={SIGN_IN} component ={SignIn}></Route>
-          <Route path={SIGN_UP} component={SignUp}></Route>
-          <Route path={ALLLCONTENT} component={AllContent}></Route>
-        </Switch>
-     </Router>
+   <Router>
+      <TopBar/>
+      <Switch>
+        <Route exact path="/"><Home /></Route>
+        <Route path="/register">{user ? <Home/> : <Register />}</Route>
+        <Route path="/login">{user ? <Home/> : <Login />}</Route>
+        <Route path="/write">{user ? <Write/> : <Register />}</Route>
+        <Route path="/settings">{user ? <Settings/> : <Register />}</Route>
+        <Route path="/post/:postId"><Single /></Route>
+      </Switch>
+   </Router>
   )
 };
 
